@@ -1,11 +1,16 @@
 :root {
   --main-bg-color: #232772ff;
   --text-color: #fff;
+  --btn-bg-color: #383b3f;
+  --btn-text-color: #fff;
+
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
@@ -34,6 +39,9 @@ body {
   :root {
     --main-bg-color: #fff;
     --text-color: #000;
+
+    --btn-bg-color: #16444f;
+    --btn-text-color: #57c4dc;
   }
 }
 
@@ -41,5 +49,8 @@ body {
   :root {
     --main-bg-color: #23272f;
     --text-color: #fff;
+
+    --btn-bg-color: #383b3f;
+    --btn-text-color: #fff;
   }
 }
