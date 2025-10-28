@@ -3,6 +3,7 @@
   --text-color: #fff;
   --btn-bg-color: #383b3f;
   --btn-text-color: #fff;
+  --card-bg-color: #343a46;
 
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -42,6 +43,7 @@ body {
 
     --btn-bg-color: #16444f;
     --btn-text-color: #57c4dc;
+    --card-bg-color: #ebedf0;
   }
 }
 
@@ -52,5 +54,6 @@ body {
 
     --btn-bg-color: #383b3f;
     --btn-text-color: #fff;
+    --card-bg-color: #343a46;
   }
 }
