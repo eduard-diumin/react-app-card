@@ -7,3 +7,14 @@
   align-items: center;
   gap: 10px;
 }
+
+.noQuestions {
+  width: fit-content;
+  margin: 30px auto;
+}
+
+@media screen and (max-width: 768px) {
+  .controlsContainer {
+    flex-wrap: wrap-reverse;
+  }
+}
