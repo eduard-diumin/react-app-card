@@ -17,6 +17,7 @@ export const HomePage = () => {
   const [cards, setCards] = useState({});
   const [searchValue, setSearchValue] = useState("");
   const [sortValue, setSortValue] = useState("");
+  const [countSelectValue, setCountSelectValue] = useState("");
 
   const controlsContainerRef = useRef();
 
@@ -58,14 +59,14 @@ export const HomePage = () => {
 
   const onSortSelectChangeHandler = (e) => {
     setSortValue(e.target.value);
-    setSearchParams(`?_page=1&_per_page=${DEFAULT_PER_PAGE}&${e.target.value}`);
+    setSearchParams(`?_page=1&_per_page=${countSelectValue}&${e.target.value}`);
   };
 
   const paginationHandler = (e) => {
     if (e.target.tagName === "BUTTON") {
       const page = e.target.textContent;
       setSearchParams(
-        `?_page=${page}&_per_page=${DEFAULT_PER_PAGE}&${sortValue}`
+        `?_page=${page}&_per_page=${countSelectValue}&${sortValue}`
       );
       controlsContainerRef.current.scrollIntoView({ behavior: "smooth" });
     }
@@ -74,11 +75,30 @@ export const HomePage = () => {
   const getActivePageNumber = () =>
     cards.next === null ? cards.last : cards.next - 1;
 
+  const onCountSelectChangeHandler = (e) => {
+    const perPage = e.target.value;
+    setCountSelectValue(perPage);
+    setSearchParams(`?_page=1&_per_page=${perPage}&${sortValue}`);
+  };
+
   return (
     <div className={cls.homePage}>
       <div className={cls.controlsContainer} ref={controlsContainerRef}>
         <SearchInput value={searchValue} onChange={onSearchChangeHendler} />
         <SortSelect value={sortValue} onChange={onSortSelectChangeHandler} />
+        <select
+          value={countSelectValue}
+          onChange={onCountSelectChangeHandler}
+          className={cls.select}
+        >
+          <option disabled>count</option>
+          <hr />
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
       </div>
 
       {isLoading && <Loader />}
@@ -89,15 +109,17 @@ export const HomePage = () => {
       {cardsFiltered.length === 0 ? (
         <h2 className={cls.noQuestions}>No Questions Found</h2>
       ) : (
-        <div className={cls.paginationContainer} onClick={paginationHandler}>
-          {pagination.map((value) => {
-            return (
-              <Button key={value} isActive={value === getActivePageNumber()}>
-                {value}
-              </Button>
-            );
-          })}
-        </div>
+        pagination.length > 1 && (
+          <div className={cls.paginationContainer} onClick={paginationHandler}>
+            {pagination.map((value) => {
+              return (
+                <Button key={value} isActive={value === getActivePageNumber()}>
+                  {value}
+                </Button>
+              );
+            })}
+          </div>
+        )
       )}
     </div>
   );
