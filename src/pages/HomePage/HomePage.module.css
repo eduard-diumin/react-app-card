@@ -13,6 +13,18 @@
   margin: 30px auto;
 }
 
+.paginationContainer {
+  width: fit-content;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px 10px 25px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 @media screen and (max-width: 768px) {
   .controlsContainer {
     flex-wrap: wrap-reverse;
